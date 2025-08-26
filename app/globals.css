@@ -3,11 +3,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --deep-midnight-blue: #0d121f;
+  --medium-purple:  #7d5dfc;
+  --light-steel-blue: #c3d4e8;
+  --blue-sky: #8fa3bf;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-deep-midnight-blue: var(--deep-midnight-blue);
+  --color-medium-purple: var(--medium-purple);
+  --color-light-steel-blue: var(--light-steel-blue);
+  --color-blue-sky: var(--blue-sky);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

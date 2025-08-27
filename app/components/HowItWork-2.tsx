@@ -51,7 +51,7 @@ const HowItWorks2 = () => {
                             <div className="flex items-start flex-col justify-center sm:gap-10 gap-4">
                                 <span className="text-white text-lg">Register your Spend.In account.</span>
                                 <span className="text-white text-lg">Fill in the list of your business expenses.</span>
-                                <span className="text-white text-lg">Done, let's continue the work.</span>
+                                <span className="text-white text-lg">Done, let&apos;s continue the work.</span>
                             </div>
                         </div>
                     </div>

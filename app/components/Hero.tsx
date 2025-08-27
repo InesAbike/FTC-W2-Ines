@@ -1,10 +1,9 @@
 'use client'
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { ChevronDown, Search, Bell, MoreHorizontal, TrendingUp, CreditCard, ArrowUpRight, ArrowDownLeft } from 'lucide-react';
 import Button from './Button';
 
-const SpendInReplica = () => {
+const SpendIn = () => {
     return (
         <div className="bg-deep-midnight-blue text-white">
             {/* Hero Section */}
@@ -68,4 +67,4 @@ const SpendInReplica = () => {
     );
 };
 
-export default SpendInReplica;
+export default SpendIn;

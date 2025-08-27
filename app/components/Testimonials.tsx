@@ -1,6 +1,7 @@
 "use client"
 import React, { useRef } from 'react';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import Image from 'next/image';
 
 const TestimonialsCarousel = () => {
     const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -111,7 +112,7 @@ const TestimonialsCarousel = () => {
                                                 </span>
                                             </div>
                                             {/* Fallback for when image doesn't exist */}
-                                            <img
+                                            <Image
                                                 src={testimonial.avatar}
                                                 alt={testimonial.author}
                                                 className="w-12 h-12 rounded-full absolute inset-0 object-cover"

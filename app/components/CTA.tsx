@@ -5,7 +5,7 @@ import Button from './Button';
 
 const CTA = () => {
     return (
-        <div className="bg-deep-midnight-blue font-semibold text-white pt-20 pl-6 relative">
+        <div className="bg-secondary-dark-700 font-semibold text-white pt-20 pl-6 relative">
             <Image
                 src="/images/decoration-left.png"
                 alt="decoration"
@@ -23,7 +23,7 @@ const CTA = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">                    {/* Left Content */}
                     <div className='pb-20'>
-                        <div className="text-purple text-sm font-semibold mb-4 uppercase tracking-wider">
+                        <div className="text-primary-default-500 text-sm font-semibold mb-4 uppercase tracking-wider">
                             DOWNLOAD NOW!
                         </div>
 
@@ -33,7 +33,7 @@ const CTA = () => {
                             Expenses Today
                         </h2>
 
-                        <p className="text-blue-sky font-light leading-relaxed mb-8 max-w-lg">
+                        <p className="text-secondary-light-400 font-light leading-relaxed mb-8 max-w-lg">
                             Are you ready to make your business more organized?
                             <br />
                             Download Spend.In now!
@@ -41,7 +41,7 @@ const CTA = () => {
                         <Button>Get a Free Demo</Button>
                     </div>
 
-                    <div className="relative flex items-end justify-end bg-[#f2f5f7] h-full w-full rounded-tl-xl pt-20 pl-16">
+                    <div className="relative flex items-end justify-end bg-secondary-light-100 h-full w-full rounded-tl-xl pt-20 pl-16">
                         <div className=' min-w-[200px] h-[320px] relative'>
                             <Image
                                 src="/images/spending-statistics.png"

@@ -25,17 +25,17 @@ const WhyUseSpendIn1 = () => {
                 {/* Header */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
                     <div>
-                        <div className="text-medium-purple text-sm font-semibold mb-4 uppercase tracking-wider">
+                        <div className="text-primary-default-500 text-sm font-semibold mb-4 uppercase tracking-wider">
                             WHY USE SPEND.IN
                         </div>
-                        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                        <h2 className="text-4xl lg:text-5xl font-bold text-secondary-dark-900 leading-tight">
                             Easy, Simple,
                             <br />
                             Affordable
                         </h2>
                     </div>
                     <div className="flex items-center">
-                        <p className="text-gray-600 text-lg leading-relaxed">
+                        <p className="text-secondary-light-400 text-lg leading-relaxed">
                             Our platform helps your business in managing expenses. These are some of the reasons why you should use our platform in managing business finances.
                         </p>
                     </div>
@@ -45,14 +45,14 @@ const WhyUseSpendIn1 = () => {
                         FeaturesData1.map((feature, index) => (
                             <div key={index} className="">
                                 {feature.image && (
-                                    <div className={`mb-6 bg-gray-100 rounded-2xl pt-4 pr-4 ${feature.imageContainerClass}`}>
+                                    <div className={`mb-6 bg-secondary-light-100 rounded-2xl pt-8 pr-8 ${feature.imageContainerClass}`}>
                                         <Image src={feature.image} alt={feature.title} width={500} height={500} />
                                     </div>
                                 )}
-                                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                                <h3 className="text-xl font-semibold text-secondary-dark-900 mb-3">
                                     {feature.title}
                                 </h3>
-                                <p className="text-gray-600 leading-relaxed">
+                                <p className="text-secondary-light-400 leading-relaxed">
                                     {feature.description}
                                 </p>
                             </div>

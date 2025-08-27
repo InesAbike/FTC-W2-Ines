@@ -5,7 +5,7 @@ import Button from './Button';
 
 const SpendIn = () => {
     return (
-        <div className="bg-deep-midnight-blue text-white">
+        <div className="bg-secondary-default-500 text-white">
             {/* Hero Section */}
             <div className="relative overflow-hidden">
                 <Image
@@ -42,9 +42,9 @@ const SpendIn = () => {
                         All your business expenses in one place.
                     </h1>
 
-                    <div className="max-w-2xl mx-auto mb-10">
-                        <p className="text-slate-400 text-lg mb-2">Your one-stop finance empower platform.</p>
-                        <p className="text-slate-400 text-lg">Manage all your business expenses with our supafast app.</p>
+                    <div className="max-w-2xl mx-auto mb-10 text-secondary-light-300">
+                        <p className="text-lg mb-1">Your one-stop finance empower platform.</p>
+                        <p className="text-lg">Manage all your business expenses with our supafast app.</p>
                     </div>
 
                     <div className="grid gap-6 sm:grid-cols-2 grid-cols-1 items-center justify-center max-w-xl mx-auto">

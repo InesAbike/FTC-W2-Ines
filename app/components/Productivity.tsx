@@ -33,59 +33,54 @@ const Productivity = () => {
       title: "Track Business Expenses until Its Millisecond",
       advantages: [
         {
-          icon: <Check size={14} className="text-green-600" />,
-          iconBg: "bg-green-100",
+          icon: <Check size={14} />,
+          iconBg: "bg-success-default-500",
           text: "Analyze your business cost easily with group transaction through tagging feature."
         },
         {
-          icon: <Check size={14} className="text-green-600" />,
-          iconBg: "bg-green-100",
+          icon: <Check size={14} />,
+          iconBg: "bg-success-default-500",
           text: "Add more than one card for payment. Integrated with more than 50+ payment method and support bulk payment."
         },
         {
-          icon: <Check size={14} className="text-green-600" />,
-          iconBg: "bg-green-100",
+          icon: <Check size={14} />,
+          iconBg: "bg-success-default-500",
           text: "Arrange your business expenses by date, name, etc., with just one click."
         },
         {
-          icon: <Check size={14} className="text-green-600" />,
-          iconBg: "bg-green-100",
+          icon: <Check size={14} />,
+          iconBg: "bg-success-default-500",
           text: "Real-time notifications and automated expense categorization."
         }
       ],
       image: "/images/with.png",
       amount: "$85,211.00",
       percentage: "65,1 %",
-      icon:<HiOutlineArrowUpRight />
+      icon: <HiOutlineArrowUpRight />
     },
     without: {
-      title: "Manual Work Challenges Without Automation",
+      title: "Taking too long to tidy up administrative files makes it unproductive",
       advantages: [
         {
-          icon: <X size={14} className="text-red-600" />,
-          iconBg: "bg-red-100",
-          text: "Time-consuming manual data entry and expense categorization."
+          icon: <X size={14} />,
+          iconBg: "bg-error-default-500",
+          text: "Complex recording process due to every administrative file in a different place."
         },
         {
-          icon: <X size={14} className="text-red-600" />,
-          iconBg: "bg-red-100",
-          text: "Higher risk of human errors and missed transactions."
+          icon: <X size={14} />,
+          iconBg: "bg-error-default-500",
+          text: "Need more effort to pay manually one by one invoice because there is no payment accommodation."
         },
         {
-          icon: <X size={14} className="text-red-600" />,
-          iconBg: "bg-red-100",
-          text: "Difficulty in tracking multiple payment methods and reconciliation."
-        },
-        {
-          icon: <X size={14} className="text-red-600" />,
-          iconBg: "bg-red-100",
-          text: "Delayed reporting and lack of real-time financial insights."
+          icon: <X size={14} />,
+          iconBg: "bg-error-default-500",
+          text: "Manual data arranging needs a long time because the different months/years are not in the same place."
         }
       ],
       image: "/images/without-spendin.png",
       amount: "$25,780.00",
       percentage: "45,6 %",
-      icon:<HiOutlineArrowDownRight />
+      icon: <HiOutlineArrowDownRight />
     }
   };
 
@@ -94,11 +89,11 @@ const Productivity = () => {
   return (
     <div className="py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="text-medium-purple text-sm font-semibold mb-4 uppercase tracking-wider">
+        <div className="text-primary-default-500 text-sm font-semibold mb-4 uppercase tracking-wider">
           INCREASE PRODUCTIVITY
         </div>
 
-        <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
+        <h2 className="text-secondary-dark-700 text-4xl lg:text-5xl font-bold mb-8 leading-tight">
           Reduce Time in Doing Manual Work
           <br />
           Managing Expenses
@@ -112,7 +107,7 @@ const Productivity = () => {
                 <button
                   onClick={() => setActiveTab('with')}
                   className={`sm:px-6 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === 'with'
-                    ? 'bg-purple text-white shadow-sm'
+                    ? 'bg-primary-default-500 text-white shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'
                     }`}
                 >
@@ -121,8 +116,8 @@ const Productivity = () => {
                 <button
                   onClick={() => setActiveTab('without')}
                   className={`sm:px-6 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === 'without'
-                    ? 'bg-purple-600 text-white shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'bg-primary-default-500 text-white shadow-sm'
+                    : 'text-secondary-light-300 hover:text-gray-900'
                     }`}
                 >
                   Without Spend.In
@@ -131,7 +126,7 @@ const Productivity = () => {
             </div>
 
             {/* Dynamic Title */}
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 transition-all duration-500">
+            <h3 className="text-2xl font-bold text-secondary-dark-700 mb-6 transition-all duration-500">
               {currentData.title}
             </h3>
 
@@ -146,10 +141,10 @@ const Productivity = () => {
                     animationFillMode: 'forwards'
                   }}
                 >
-                  <div className={`${advantage.iconBg} rounded-full p-1 mt-0.5 flex-shrink-0 transition-all duration-300`}>
+                  <div className={`${advantage.iconBg} text-white rounded-full p-1 mt-0.5 flex-shrink-0 transition-all duration-300`}>
                     {advantage.icon}
                   </div>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-secondary-700 leading-relaxed">
                     {advantage.text}
                   </p>
                 </div>
@@ -170,7 +165,7 @@ const Productivity = () => {
               </div>
               <div className='flex items-center justify-between'>
                 <div className='text-[#1a202c] font-bold text-3xl'>{currentData.amount}</div>
-                <div className={`flex gap-1 items-center font-bold ${activeTab === 'with' ? 'text-[#659611]' : 'text-[#db2518]'}`}>{currentData.icon}
+                <div className={`flex gap-1 items-center font-bold ${activeTab === 'with' ? 'text-success-dark-700' : 'text-error-default-500'}`}>{currentData.icon}
                   {currentData.percentage}</div>
               </div>
               <Image

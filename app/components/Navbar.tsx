@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import { menuItems, productsItems, companyItems, ctaButtons } from "../constants";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -23,9 +24,10 @@ function Navbar() {
 
   // Fermer le dropdown quand on clique ailleurs
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
       // Ne pas fermer si on clique sur un bouton de dropdown
-      if (!event.target.closest('[data-dropdown]')) {
+      if (!target.closest('[data-dropdown]')) {
         setActiveDropdown(null);
       }
     };
@@ -33,61 +35,14 @@ function Navbar() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const productsItems = [
-    { label: "Digital Invoice", href: "#" },
-    { label: "Insights", href: "#" },
-    { label: "Reimbursements", href: "#" },
-    { label: "Virtual Assistant", href: "#" },
-    { label: "Artificial Intelligence", href: "#" }
-  ];
-
-  const companyItems = [
-    { label: "About Us", href: "#" },
-    { label: "Newsletters", href: "#" },
-    { label: "Our Partners", href: "#" },
-    { label: "Career", href: "#" },
-    { label: "Contact Us", href: "#" },
-  ];
-
-  const menuItems = [
-    {
-      label: "Products",
-      href: "#features",
-      hasDropdown: true,
-      dropdownItems: productsItems
-    },
-    { label: "Benefit", href: "#" },
-    { label: "How it works", href: "#" },
-    { label: "Pricing", href: "#" },
-    {
-      label: "Company",
-      href: "#",
-      hasDropdown: true,
-      dropdownItems: companyItems
-    },
-  ];
-
-  const ctaButtons = [
-    {
-      label: "Login",
-      href: "#",
-      primary: true
-    },
-    {
-      label: "Get Demo",
-      href: "#",
-      primary: false
-    }
-  ];
-
-  const handleDropdownToggle = (e, index) => {
+  const handleDropdownToggle = (e: React.MouseEvent, index: number) => {
     e.stopPropagation();
     setActiveDropdown(activeDropdown === index ? null : index);
   };
 
   return (
     <>
-      <nav className="bg-deep-midnight-blue border-b border-white/10 text-white px-6 py-4 relative z-50">
+      <nav className="bg-secondary-default-500 border-b border-white/10 text-white px-6 py-4 relative z-50">
         <div className="mx-auto flex items-center justify-between max-w-7xl">
           <Link href="#" className="flex items-center space-x-2 z-50 relative">
             <Image
@@ -106,7 +61,7 @@ function Navbar() {
                 {item.hasDropdown ? (
                   <button
                     data-dropdown
-                    onClick={(e) => handleDropdownToggle(e, index)}
+                    onClick={(e: React.MouseEvent) => handleDropdownToggle(e, index)}
                     onMouseEnter={() => setActiveDropdown(index)}
                     className="group relative text-light-gray hover:text-white transition-colors duration-300 flex items-center space-x-1"
                     style={{
@@ -123,7 +78,7 @@ function Navbar() {
                   </button>
                 ) : (
                   <Link
-                    href={item.href}
+                    href={item.href || '#'}
                     className="group relative text-light-gray hover:text-white transition-colors duration-300"
                     style={{
                       animationDelay: `${index * 100}ms`
@@ -135,7 +90,7 @@ function Navbar() {
                 )}
 
                 {/* Dropdown Menu */}
-                {item.hasDropdown && (
+                {item.hasDropdown && item.dropdownItems && (
                   <div
                     className={`
                       absolute top-full left-0 mt-2 w-40 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden
@@ -186,8 +141,8 @@ function Navbar() {
                 className={`
                   px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105
                   ${button.primary
-                    ? 'bg-transparent hover:bg-medium-purple text-light-steel-blue hover:text-white shadow-lg'
-                    : ' text-white hover:bg-transparent bg-medium-purple'
+                    ? 'bg-transparent hover:bg-primary-default-500 text-secondary-light-200 hover:text-white shadow-lg'
+                    : ' text-white hover:bg-transparent bg-primary-default-500'
                   }
                 `}
                 style={{
@@ -249,7 +204,7 @@ function Navbar() {
         {/* Menu content */}
         <div
           className={`
-            absolute top-0 right-0 w-full h-full bg-deep-midnight-blue
+            absolute top-0 right-0 w-full h-full bg-secondary-default-500
             transform transition-all duration-500 ease-out shadow-2xl flex flex-col justify-between
             ${isOpen
               ? 'translate-x-0 opacity-100'
@@ -262,7 +217,7 @@ function Navbar() {
             {menuItems.map((item, index) => (
               <div key={item.label}>
                 <Link
-                  href={item.href}
+                  href={item.href || '#'}
                   onClick={() => setIsOpen(false)}
                   className={`
                     block text-xl font-light text-white/90 hover:text-white transition-all duration-300
@@ -282,7 +237,7 @@ function Navbar() {
                   </span>
                 </Link>
                 {/* Mobile dropdown items */}
-                {item.hasDropdown && (
+                {item.hasDropdown && item.dropdownItems && (
                   <div className="ml-4 mt-2 space-y-2">
                     {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
                       <Link

@@ -24,13 +24,13 @@ const WhyUseSpendIn2 = () => {
             <div className="max-w-7xl mx-auto">
                 {/* Header centré */}
                 <div className="md:text-center text-left mb-16">
-                    <div className="text-medium-purple text-sm font-semibold mb-4 uppercase tracking-wider">
+                    <div className="text-primary-default-500 text-sm font-semibold mb-4 uppercase tracking-wider">
                         WHY USE SPEND.IN
                     </div>
-                    <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="text-4xl lg:text-5xl font-bold text-secondary-dark-900 mb-6">
                         Easy, Simple, Affordable
                     </h2>
-                    <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
+                    <p className="text-secondary-light-400 text-lg leading-relaxed max-w-2xl mx-auto">
                         Our platform helps your business in managing expenses. These are some of the reasons why you should use our platform in managing business finances.
                     </p>
                 </div>
@@ -41,7 +41,7 @@ const WhyUseSpendIn2 = () => {
                         {
                             FeaturesData2.map(
                                 (feature, index) => <div key={index} className="flex items-start space-x-4 mb-8">
-                                    <div className="bg-medium-purple rounded-xl p-3 flex-shrink-0">
+                                    <div className="bg-primary-default-500 rounded-xl p-3 flex-shrink-0">
                                         <div className="text-white">
                                             {feature.icon === 'FileText' && <FileText size={24} />}
                                             {feature.icon === 'Receipt' && <Receipt size={24} />}
@@ -49,10 +49,10 @@ const WhyUseSpendIn2 = () => {
                                         </div>
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                                        <h3 className="text-xl font-semibold text-secondary-dark-900 mb-2">
                                             {feature.title}
                                         </h3>
-                                        <p className="text-gray-600 leading-relaxed">
+                                        <p className="text-secondary-light-400 leading-relaxed">
                                             {feature.description}
                                         </p>
                                     </div>

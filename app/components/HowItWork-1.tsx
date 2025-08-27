@@ -32,10 +32,10 @@ const HowItWork1 = () => {
                                     <div className='relative'>
                                         <Image src={feature.image || ""}
                                         alt={feature.title}
-                                        width={200}
-                                        height={500} />
+                                        width={300}
+                                        height={600} />
                                         <div className="text-white text-2xl absolute -left-5 -top-5 flex items-center justify-center rounded-full h-20 w-20 bg-secondary-default-500">
-                                            <div className="bg-primary-default-500 rounded-full h-12 w-12 flex items-center justify-center">
+                                            <div className="bg-primary-default-500 rounded-full h-18 w-18 flex items-center justify-center">
                                                 {feature.id}
                                             </div>
                                         </div>

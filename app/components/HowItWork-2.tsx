@@ -12,7 +12,7 @@ const HowItWorks2 = () => {
                             alt="How it work"
                             width={500}
                             height={500}
-                            className='h-full lg:w-auto w-full'
+                            className='h-full lg:w-[500px] w-full'
                         />
                     </div>
 

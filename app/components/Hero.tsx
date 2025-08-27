@@ -11,16 +11,16 @@ const SpendIn = () => {
                 <Image
                     src="/images/hero-decoration-left.png"
                     alt="decoration"
-                    width={250}
-                    height={250}
-                    className='left-0 bottom-0 absolute'
+                    width={200}
+                    height={200}
+                    className='left-0 sm:w-[250px] sm:h-[250px] w-[200px] h-[200px] bottom-0 absolute'
                 />
                 <Image
                     src="/images/hero-decoration-right.png"
                     alt="decoration"
-                    width={250}
-                    height={250}
-                    className='right-0 top-0 absolute'
+                    width={200}
+                    height={200}
+                    className='right-0 top-0 sm:w-[250px] sm:h-[250px] w-[200px] h-[200px] absolute'
                 />
                 <Image
                     src="/images/decoration-left.png"
@@ -38,7 +38,7 @@ const SpendIn = () => {
                 />
 
                 <div className="relative px-6 pt-20 pb-12 text-center">
-                    <h1 className="text-5xl md:text-6xl max-w-2xl mx-auto font-bold mb-6 md:text-center text-left leading-tight">
+                    <h1 className="text-4xl md:text-5xl max-w-xl mx-auto font-bold mb-6 md:text-center text-left leading-tight">
                         All your business expenses in one place.
                     </h1>
 

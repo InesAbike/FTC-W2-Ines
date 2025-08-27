@@ -6,7 +6,21 @@ import { FeaturesData1 } from '../datas';
 
 const WhyUseSpendIn1 = () => {
     return (
-        <div className="bg-white md:py-20 py-10 px-6">
+        <div className="bg-white md:py-20 py-10 px-6 relative">
+            <Image
+                src="/images/decoration-left.png"
+                alt="decoration"
+                width={250}
+                height={250}
+                className='left-0 top-0 absolute'
+            />
+            <Image
+                src="/images/decoration-right.png"
+                alt="decoration"
+                width={250}
+                height={250}
+                className='right-0 bottom-0 absolute'
+            />
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">

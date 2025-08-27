@@ -6,7 +6,21 @@ import { FileText, Receipt, CreditCard } from 'lucide-react';
 const WhyUseSpendIn2 = () => {
 
     return (
-        <div className="bg-white md:py-20 py-10 px-6">
+        <div className="bg-white md:py-20 py-10 px-6 relative">
+            <Image
+                src="/images/decoration-left.png"
+                alt="decoration"
+                width={250}
+                height={250}
+                className='left-0 top-0 absolute'
+            />
+            <Image
+                src="/images/decoration-right.png"
+                alt="decoration"
+                width={250}
+                height={250}
+                className='right-0 bottom-0 absolute'
+            />
             <div className="max-w-7xl mx-auto">
                 {/* Header centré */}
                 <div className="md:text-center text-left mb-16">

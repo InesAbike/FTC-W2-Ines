@@ -1,6 +1,7 @@
 "use client"
 import React, { useRef, useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 const TestimonialsCarousel = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -96,7 +97,21 @@ const TestimonialsCarousel = () => {
     };
 
     return (
-        <div className="bg-slate-900 py-20 px-6">
+        <div className="bg-slate-900 py-20 px-6 relative">
+            <Image
+                src="/images/decoration-left.png"
+                alt="decoration"
+                width={250}
+                height={250}
+                className='left-0 top-0 absolute'
+            />
+            <Image
+                src="/images/decoration-right.png"
+                alt="decoration"
+                width={250}
+                height={250}
+                className='right-0 bottom-0 absolute'
+            />
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
@@ -118,13 +133,13 @@ const TestimonialsCarousel = () => {
                     <div
                         ref={carouselRef}
                         className="flex transition-transform duration-500 ease-out"
-                        style={{ 
+                        style={{
                             transform: `translateX(-${currentSlide * getSlideWidth()}%)`,
                         }}
                     >
                         {testimonials.map((testimonial) => (
-                            <div 
-                                key={testimonial.id} 
+                            <div
+                                key={testimonial.id}
                                 className="flex-shrink-0 px-2 md:px-4"
                                 style={{ width: `${getSlideWidth()}%` }}
                             >
@@ -175,11 +190,10 @@ const TestimonialsCarousel = () => {
                     {/* Left Button */}
                     <button
                         onClick={prevSlide}
-                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${
-                            currentSlide > 0
+                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${currentSlide > 0
                                 ? 'bg-purple-600 hover:bg-purple-700 text-white'
                                 : 'bg-gray-600 cursor-not-allowed opacity-50 text-gray-400'
-                        }`}
+                            }`}
                         disabled={currentSlide === 0}
                     >
                         <ArrowLeft size={20} />
@@ -188,11 +202,10 @@ const TestimonialsCarousel = () => {
                     {/* Right Button */}
                     <button
                         onClick={nextSlide}
-                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${
-                            currentSlide < maxSlides
+                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${currentSlide < maxSlides
                                 ? 'bg-purple-600 hover:bg-purple-700 text-white'
                                 : 'bg-gray-600 cursor-not-allowed opacity-50 text-gray-400'
-                        }`}
+                            }`}
                         disabled={currentSlide >= maxSlides}
                     >
                         <ArrowRight size={20} />

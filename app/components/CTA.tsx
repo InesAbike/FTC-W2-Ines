@@ -5,7 +5,21 @@ import Button from './Button';
 
 const CTA = () => {
     return (
-        <div className="bg-deep-midnight-blue font-semibold text-white pt-20 pl-6">
+        <div className="bg-deep-midnight-blue font-semibold text-white pt-20 pl-6 relative">
+            <Image
+                src="/images/decoration-left.png"
+                alt="decoration"
+                width={250}
+                height={250}
+                className='left-0 top-0 absolute'
+            />
+            <Image
+                src="/images/decoration-right.png"
+                alt="decoration"
+                width={250}
+                height={250}
+                className='right-0 bottom-0 absolute'
+            />
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">                    {/* Left Content */}
                     <div className='pb-20'>

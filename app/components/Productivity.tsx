@@ -158,7 +158,7 @@ const Productivity = () => {
           </div>
 
           {/* Dynamic Image */}
-          <div className="bg-light-gray rounded-2xl p-8 max-h-[500px]">
+          <div className="bg-light-gray rounded-2xl sm:p-8 p-4 max-h-[500px]">
             <div className="relative overflow-hidden flex flex-col gap-2">
               <div className='flex items-center justify-between'>
                 <div className='text-blue-sky font-semibold text-lg'> Balance Statistics</div>

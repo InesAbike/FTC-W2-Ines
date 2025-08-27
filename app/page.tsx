@@ -9,7 +9,7 @@ import Pricing from "./components/Pricing";
 
 export default function Home() {
   return (
-    <div className="font-sans">
+    <div className="font-sans text-deep-midnight-blue">
     <Hero/>
     <WhyUseSpendIn1 />
     <WhyUseSpendIn2 />

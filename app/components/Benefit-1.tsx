@@ -6,7 +6,7 @@ import { FeaturesData1 } from '../datas';
 
 const WhyUseSpendIn1 = () => {
     return (
-        <div className="bg-gray-50 py-20 px-10">
+        <div className="bg-white md:py-20 py-10 px-6">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
@@ -29,7 +29,7 @@ const WhyUseSpendIn1 = () => {
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6'>
                     {
                         FeaturesData1.map((feature, index) => (
-                            <div key={index} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                            <div key={index} className="">
                                 {feature.image && (
                                     <div className={`mb-6 bg-gray-100 rounded-2xl pt-4 pr-4 ${feature.imageContainerClass}`}>
                                         <Image src={feature.image} alt={feature.title} width={500} height={500} />

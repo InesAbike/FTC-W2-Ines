@@ -3,7 +3,7 @@ import Image from 'next/image';
 const HowItWorks2 = () => {
 
     return (
-        <div className="bg-deep-midnight-blue py-16 px-10">
+        <div className="bg-deep-midnight-blue py-10 md:py-20 px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left - Dashboard Mockup */}
@@ -30,7 +30,7 @@ const HowItWorks2 = () => {
                         </p>
 
                         
-                        <div className="bg-slate-50/10 p-8 rounded-md flex items-center gap-4">
+                        <div className="bg-slate-50/10 sm:p-8 p-4 rounded-md flex items-center gap-4">
                             <div className="flex items-center flex-col">
                                 <div className="bg-medium-purple text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm flex-shrink-0">
                                     1
@@ -48,7 +48,7 @@ const HowItWorks2 = () => {
                                     3
                                 </div>
                             </div>
-                            <div className="flex items-start flex-col justify-center gap-10">
+                            <div className="flex items-start flex-col justify-center sm:gap-10 gap-4">
                                 <span className="text-white text-lg">Register your Spend.In account.</span>
                                 <span className="text-white text-lg">Fill in the list of your business expenses.</span>
                                 <span className="text-white text-lg">Done, let's continue the work.</span>

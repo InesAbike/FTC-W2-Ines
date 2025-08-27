@@ -6,10 +6,10 @@ import { FileText, Receipt, CreditCard } from 'lucide-react';
 const WhyUseSpendIn2 = () => {
 
     return (
-        <div className="bg-white py-20 px-10">
+        <div className="bg-white md:py-20 py-10 px-6">
             <div className="max-w-7xl mx-auto">
                 {/* Header centré */}
-                <div className="text-center mb-16">
+                <div className="md:text-center text-left mb-16">
                     <div className="text-medium-purple text-sm font-semibold mb-4 uppercase tracking-wider">
                         WHY USE SPEND.IN
                     </div>

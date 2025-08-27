@@ -10,11 +10,25 @@ interface Advantage {
   text: string;
 }
 
+interface TabData {
+  title: string;
+  advantages: Advantage[];
+  image: string;
+  amount: string;
+  percentage: string;
+  icon: ReactNode;
+}
+
+interface TabDataMap {
+  with: TabData;
+  without: TabData;
+}
+
 const Productivity = () => {
-  const [activeTab, setActiveTab] = useState('with');
+  const [activeTab, setActiveTab] = useState<keyof TabDataMap>('with');
 
   // Configuration des données pour chaque onglet
-  const tabData = {
+  const tabData: TabDataMap = {
     with: {
       title: "Track Business Expenses until Its Millisecond",
       advantages: [
@@ -80,11 +94,11 @@ const Productivity = () => {
   return (
     <div className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-purple-600 text-sm font-semibold mb-4 uppercase tracking-wider">
+        <div className="text-medium-purple text-sm font-semibold mb-4 uppercase tracking-wider">
           INCREASE PRODUCTIVITY
         </div>
 
-        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+        <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
           Reduce Time in Doing Manual Work
           <br />
           Managing Expenses
@@ -93,12 +107,12 @@ const Productivity = () => {
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
           <div className="">
             {/* Toggle Buttons */}
-            <div className="flex items-center mb-8">
+            <div className="flex items-center sm:justify-start justify-center mb-8">
               <div className="bg-gray-100 rounded-full p-1 flex">
                 <button
                   onClick={() => setActiveTab('with')}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === 'with'
-                    ? 'bg-purple-600 text-white shadow-sm'
+                  className={`sm:px-6 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === 'with'
+                    ? 'bg-purple text-white shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'
                     }`}
                 >
@@ -106,7 +120,7 @@ const Productivity = () => {
                 </button>
                 <button
                   onClick={() => setActiveTab('without')}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === 'without'
+                  className={`sm:px-6 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeTab === 'without'
                     ? 'bg-purple-600 text-white shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'
                     }`}

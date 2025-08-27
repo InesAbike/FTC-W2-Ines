@@ -57,7 +57,7 @@ function Navbar() {
           </Link>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-8 text-md font-base">
+          <div className="hidden lg:flex items-center space-x-8 text-md font-base">
             {menuItems.map((item, index) => (
               <Link
                 key={item.label}
@@ -73,7 +73,7 @@ function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             {ctaButtons.map((button, index) => (
               <Link
                 key={button.label}
@@ -95,7 +95,7 @@ function Navbar() {
           </div>
 
           <button
-            className="bg-indigo-900/95 rounded-lg md:hidden relative z-50 w-11 h-11 flex items-center justify-center"
+            className="rounded-lg lg:hidden relative z-50 w-11 h-11 flex items-center justify-center"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -144,7 +144,7 @@ function Navbar() {
         {/* Menu content */}
         <div
           className={`
-            absolute top-0 right-0 w-full h-full bg-indigo-black
+            absolute top-0 right-0 w-full h-full bg-deep-midnight-blue
             transform transition-all duration-500 ease-out shadow-2xl flex flex-col justify-between
             ${isOpen
               ? 'translate-x-0 opacity-100'

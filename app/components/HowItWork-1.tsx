@@ -2,14 +2,15 @@
 import React from 'react';
 import Image from 'next/image';
 import { StepsData } from '../datas';
+import Button from './Button';
 
 const HowItWork1 = () => {
 
     return (
-        <div className="bg-deep-midnight-blue py-20">
+        <div className="bg-deep-midnight-blue md:py-20 py-10 px-6">
             <div className="max-w-7xl mx-auto">
                 {/* Header centré */}
-                <div className="text-center mb-16">
+                <div className="md:text-center text-left mb-16">
                     <div className="text-medium-purple text-sm font-light mb-4 uppercase tracking-wider">
                         HOW IT WORKS
                     </div>
@@ -22,12 +23,12 @@ const HowItWork1 = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 justify-between mx-auto items-center max-w-6xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between mx-auto items-center max-w-6xl">
                     {
                         StepsData.map(
                             (feature, index) => <div key={index} className="relative flex flex-col items-center justify-center space-x-4 mb-8">
 
-                                <div className='flex flex-col items-center justify-center'>
+                                <div className='flex flex-col items-center justify-center gap-4'>
                                     <div className='relative'>
                                         <Image src={feature.image || ""}
                                         alt={feature.title}
@@ -47,13 +48,9 @@ const HowItWork1 = () => {
                         )
                     }
                 </div>
-                <div className="flex items-center justify-center space-x-10">
-                    <button className="bg-medium-purple hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors">
-                        Get a Free Demo
-                    </button>
-                    <button className="bg-white/10 rounded-full text-light-steel-blue px-6 py-3 hover:text-white font-medium">
-                        See Pricing
-                    </button>
+                <div className="grid sm:grid-cols-2 grid-cols-1 items-center justify-center gap-6 max-w-xl mx-auto">
+                    <Button>Get a Free Demo</Button>
+                    <Button variant="secondary">See Pricing</Button>
                 </div>
             </div>
         </div>

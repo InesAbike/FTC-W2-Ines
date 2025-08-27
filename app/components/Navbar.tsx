@@ -43,7 +43,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="bg-deep-midnight-blue border-b border-white/50 text-white px-6 py-4 relative z-50">
+      <nav className="bg-deep-midnight-blue border-b border-white/10 text-white px-6 py-4 relative z-50">
         <div className="mx-auto flex items-center justify-between max-w-7xl">
           {/* Logo */}
           <Link href="#" className="flex items-center space-x-2 z-50 relative">

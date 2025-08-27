@@ -10,6 +10,7 @@
   --light-gray:#fafafa;
   --purple: #7c5cfc;
   --slate-gray: #596780;
+  --light-blue-gray: #f2f5f7;
 }
 
 @theme inline {
@@ -22,6 +23,7 @@
   --color-blue-sky: var(--blue-sky);
   --color-purple: var(--purple);
   --color-slate-gray: var(--slate-gray);
+  --color-light-blue-gray: var(--light-blue-gray);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

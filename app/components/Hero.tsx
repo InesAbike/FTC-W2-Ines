@@ -53,12 +53,12 @@ const SpendIn = () => {
                     </div>
                 </div>
                 <div>
-                    <div className='flex items-center justify-center pt-16 px-6'>
+                    <div className='flex items-center justify-center sm:pt-16 pt-12 px-6'>
                         <Image
                             src="/images/dashboard.png"
                             alt="Logo"
                             width={1000}
-                            height={500}
+                            height={800}
                         />
                     </div>
                 </div>

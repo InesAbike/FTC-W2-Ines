@@ -144,7 +144,7 @@ const Productivity = () => {
                   <div className={`${advantage.iconBg} text-white rounded-full p-1 mt-0.5 flex-shrink-0 transition-all duration-300`}>
                     {advantage.icon}
                   </div>
-                  <p className="text-secondary-700 leading-relaxed">
+                  <p className="text-secondary-dark-700 leading-relaxed">
                     {advantage.text}
                   </p>
                 </div>

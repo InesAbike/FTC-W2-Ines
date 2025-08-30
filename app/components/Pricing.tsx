@@ -24,38 +24,57 @@ const PricingSection = () => {
                 </div>
 
                 {/* Billing Toggle */}
-                <div className="flex items-center justify-center flex-col gap-8 mb-16 max-w-2xl mx-auto">
-                    <div className="flex items-center space-x-4">
-                        <span className={`text-lg font-medium ${billingType === 'monthly' ? 'text-gray-900' : 'text-gray-500'}`}>
-                            Monthly
-                        </span>
-                        <div className="relative">
-                            <button
-                                onClick={() => setBillingType(billingType === 'monthly' ? 'yearly' : 'monthly')}
-                                className="w-14 h-7 text-secondary-dark-700 bg-primary-default-500 rounded-full flex items-center transition-all duration-300"
-                            >
-                                <div className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${billingType === 'yearly' ? 'translate-x-7' : 'translate-x-1'
-                                    }`}></div>
-                            </button>
-                        </div>
+              {/* Billing Toggle */}
+<div className="flex items-center justify-center flex-col gap-8 mb-16 max-w-2xl mx-auto">
+  <div className="flex items-center space-x-4">
+    <span
+      className={`text-lg font-medium ${
+        billingType === 'monthly' ? 'text-gray-900' : 'text-gray-500'
+      }`}
+    >
+      Monthly
+    </span>
+    <div className="relative">
+      <button
+        onClick={() =>
+          setBillingType(billingType === 'monthly' ? 'yearly' : 'monthly')
+        }
+        className="w-14 h-7 text-secondary-dark-700 bg-primary-default-500 rounded-full flex items-center transition-all duration-300"
+      >
+        <div
+          className={`w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
+            billingType === 'yearly' ? 'translate-x-7' : 'translate-x-1'
+          }`}
+        ></div>
+      </button>
+    </div>
 
-                        <div className="flex items-center fspace-x-2">
-                            <span className={`text-lg font-medium ${billingType === 'yearly' ? 'text-gray-900' : 'text-gray-500'}`}>
-                                Yearly
-                            </span>
-                        </div>
-                    </div>
-                    <div className="bg-primary-light-100 text-secondary-default-500 relative px-2 py-1 rounded-full text-xs font-medium">
-                        <span>Save 65%</span>
-                        <Image
-                            src="/images/arrow-bottom.png"
-                            alt="With Spend.In"
-                            width={50}
-                            height={50}
-                            className='absolute -top-8 -right-20 transform -translate-x-1/2'
-                        />
-                    </div>
-                </div>
+    <div className="flex items-center fspace-x-2">
+      <span
+        className={`text-lg font-medium ${
+          billingType === 'yearly' ? 'text-gray-900' : 'text-gray-500'
+        }`}
+      >
+        Yearly
+      </span>
+    </div>
+  </div>
+
+  {/* Badge conditionnel */}
+  {billingType === 'yearly' && (
+    <div className="bg-primary-light-100 text-secondary-default-500 relative px-2 py-1 rounded-full text-xs font-medium">
+      <span>Save 65%</span>
+      <Image
+        src="/images/arrow-bottom.png"
+        alt="With Spend.In"
+        width={50}
+        height={50}
+        className="absolute -top-8 -right-20 transform -translate-x-1/2"
+      />
+    </div>
+  )}
+</div>
+
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {pricingPlans.map((plan) => (

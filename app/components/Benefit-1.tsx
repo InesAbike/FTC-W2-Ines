@@ -135,7 +135,7 @@ const WhyUseSpendIn1: React.FC = () => {
     };
 
     return (
-        <div ref={containerRef} className="bg-white md:py-20 py-10 px-6 relative overflow-hidden">
+        <div ref={containerRef} className="bg-white md:py-20 py-10 md:px-16 px-6 relative overflow-hidden">
             {/* Décorations animées */}
             <div ref={addToDecorationRefs}>
                 <Image
@@ -158,11 +158,11 @@ const WhyUseSpendIn1: React.FC = () => {
             
             <div className="max-w-7xl mx-auto">
                 {/* Header animé */}
-                <div ref={headerRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div ref={headerRef} className="grid grid-cols-1 lg:grid-cols-3 mb-16 gap-8">
                     <div>
                         <div 
                             ref={taglineRef}
-                            className="text-primary-default-500 text-sm font-semibold mb-4 uppercase tracking-wider"
+                            className="text-primary-default-500 text-sm font-semibold mb-4 uppercase tracking-wider col-span-1"
                         >
                             WHY USE SPEND.IN
                         </div>
@@ -175,7 +175,7 @@ const WhyUseSpendIn1: React.FC = () => {
                             Affordable
                         </h2>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center max-w-[500px] lg:col-span-2 col-span-1">
                         <p 
                             ref={descriptionRef}
                             className="text-secondary-light-400 text-lg leading-relaxed"

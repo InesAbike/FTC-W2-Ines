@@ -55,7 +55,7 @@ const TestimonialsCarousel = () => {
     };
 
     return (
-        <div className="bg-secondary-dark-700 py-20 px-6 relative">
+        <div className="bg-secondary-dark-700 py-20 md:px-16 px-6  relative">
             <Image
                 src="/images/decoration-left.png"
                 alt="decoration"

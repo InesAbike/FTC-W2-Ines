@@ -11,7 +11,7 @@ const PricingSection = () => {
     const [billingType, setBillingType] = useState('yearly');
 
     return (
-        <div className="bg-white py-20 px-6">
+        <div className="bg-white py-20 md:px-16 px-6 ">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-10">

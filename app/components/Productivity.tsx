@@ -87,7 +87,7 @@ const Productivity = () => {
   const currentData = tabData[activeTab];
 
   return (
-    <div className="py-20 px-6 bg-white">
+    <div className="py-20 md:px-16 px-6  bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-primary-default-500 text-sm font-semibold mb-4 uppercase tracking-wider">
           INCREASE PRODUCTIVITY

@@ -1,137 +1,159 @@
 'use client'
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Button from './Button';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Button from './Button';
 
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
-
-const SpendIn = () => {
-    const containerRef = useRef(null);
-    const heroRef = useRef(null);
-    const titleRef = useRef(null);
-    const subtitleRef = useRef(null);
-    const buttonsRef = useRef(null);
-    const dashboardRef = useRef(null);
-    const decorationRefs = useRef([]);
+const SpendIn: React.FC = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const heroRef = useRef<HTMLDivElement>(null);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const subtitleRef = useRef<HTMLDivElement>(null);
+    const buttonsRef = useRef<HTMLDivElement>(null);
+    const dashboardRef = useRef<HTMLDivElement>(null);
+    const decorationLeftTopRef = useRef<HTMLDivElement>(null);
+    const decorationRightTopRef = useRef<HTMLDivElement>(null);
+    const decorationLeftBottomRef = useRef<HTMLDivElement>(null);
+    const decorationRightBottomRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Timeline pour les animations d'entrée
+            // Timeline principale
             const tl = gsap.timeline();
 
-            // Animation des décorations avec un effet de parallax subtil
-            gsap.set(decorationRefs.current, { opacity: 0, scale: 0.8 });
-            
-            decorationRefs.current.forEach((decoration, index) => {
-                if (decoration) {
-                    tl.to(decoration, {
-                        opacity: 0.7,
-                        scale: 1,
-                        duration: 1.2,
-                        ease: "power2.out",
-                        delay: index * 0.1
-                    }, 0);
-                }
+            // Animation des éléments décoratifs avec parallax subtil
+            gsap.set([decorationLeftTopRef.current, decorationRightTopRef.current, decorationLeftBottomRef.current, decorationRightBottomRef.current], {
+                opacity: 0,
+                scale: 0.8
             });
 
-            // Animation du titre avec effet de typewriter subtil
-            gsap.set(titleRef.current, { opacity: 0, y: 50 });
+            tl.to([decorationLeftTopRef.current, decorationRightBottomRef.current], {
+                opacity: 0.7,
+                scale: 1,
+                duration: 1.2,
+                ease: "power2.out"
+            }, 0)
+            .to([decorationRightTopRef.current, decorationLeftBottomRef.current], {
+                opacity: 0.7,
+                scale: 1,
+                duration: 1.2,
+                ease: "power2.out"
+            }, 0.2);
+
+            // Animation du titre avec effet de révélation
+            gsap.set(titleRef.current, {
+                y: 60,
+                opacity: 0
+            });
+
             tl.to(titleRef.current, {
-                opacity: 1,
                 y: 0,
+                opacity: 1,
                 duration: 1,
                 ease: "power3.out"
             }, 0.3);
 
-            // Animation des sous-titres
-            gsap.set(subtitleRef.current?.children || [], { opacity: 0, y: 30 });
-            tl.to(subtitleRef.current?.children || [], {
-                opacity: 1,
+            // Animation du sous-titre
+            gsap.set(subtitleRef.current, {
+                y: 40,
+                opacity: 0
+            });
+
+            tl.to(subtitleRef.current, {
                 y: 0,
+                opacity: 1,
                 duration: 0.8,
-                stagger: 0.2,
                 ease: "power2.out"
             }, 0.6);
 
-            // Animation des boutons avec effet bounce
-            gsap.set(buttonsRef.current?.children || [], { opacity: 0, y: 30, scale: 0.9 });
+            // Animation des boutons avec stagger
+            gsap.set(buttonsRef.current?.children || [], {
+                y: 30,
+                opacity: 0
+            });
+
             tl.to(buttonsRef.current?.children || [], {
-                opacity: 1,
                 y: 0,
-                scale: 1,
+                opacity: 1,
                 duration: 0.6,
-                stagger: 0.15,
-                ease: "back.out(1.7)"
+                stagger: 0.1,
+                ease: "power2.out"
             }, 0.9);
 
-            // Animation du dashboard avec effet de révélation
-            gsap.set(dashboardRef.current, { opacity: 0, y: 100, scale: 0.95 });
+            // Animation du dashboard avec effet de montée
+            gsap.set(dashboardRef.current, {
+                y: 80,
+                opacity: 0,
+                scale: 0.95
+            });
+
             tl.to(dashboardRef.current, {
-                opacity: 1,
                 y: 0,
+                opacity: 1,
                 scale: 1,
                 duration: 1.2,
                 ease: "power2.out"
-            }, 1.1);
+            }, 1.2);
 
-            // Animations au scroll avec ScrollTrigger
-            ScrollTrigger.create({
-                trigger: containerRef.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-                onUpdate: (self) => {
-                    const progress = self.progress;
-                    
-                    // Parallax subtil pour les décorations
-                    decorationRefs.current.forEach((decoration, index) => {
-                        if (decoration) {
-                            const speed = (index % 2 === 0) ? -30 : 30;
-                            gsap.set(decoration, {
-                                y: progress * speed
-                            });
-                        }
-                    });
-
-                    // Effet parallax pour le dashboard
-                    if (dashboardRef.current) {
-                        gsap.set(dashboardRef.current, {
-                            y: progress * -50
-                        });
-                    }
-                }
-            });
-
-            // Animations hover pour les boutons
-            if (buttonsRef.current) {
-                const buttons = buttonsRef.current.children;
-                Array.from(buttons).forEach((button) => {
-                    button.addEventListener('mouseenter', () => {
-                        gsap.to(button, {
-                            scale: 1.05,
-                            duration: 0.3,
-                            ease: "power2.out"
-                        });
-                    });
-
-                    button.addEventListener('mouseleave', () => {
-                        gsap.to(button, {
-                            scale: 1,
-                            duration: 0.3,
-                            ease: "power2.out"
-                        });
+            // Animations de hover sur les boutons
+            const buttons = buttonsRef.current?.querySelectorAll('button');
+            buttons?.forEach((button: Element) => {
+                const buttonElement = button as HTMLButtonElement;
+                
+                buttonElement.addEventListener('mouseenter', () => {
+                    gsap.to(buttonElement, {
+                        scale: 1.05,
+                        duration: 0.3,
+                        ease: "power2.out"
                     });
                 });
-            }
 
-            // Animation flottante continue pour le dashboard
-            gsap.to(dashboardRef.current, {
-                y: "+=10",
-                duration: 3,
-                ease: "sine.inOut",
+                buttonElement.addEventListener('mouseleave', () => {
+                    gsap.to(buttonElement, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Animation continue des décorations (parallax subtil)
+            gsap.to(decorationLeftTopRef.current, {
+                y: -10,
+                x: -5,
+                rotation: 2,
+                duration: 4,
+                ease: "power1.inOut",
+                yoyo: true,
+                repeat: -1
+            });
+
+            gsap.to(decorationRightTopRef.current, {
+                y: 10,
+                x: 5,
+                rotation: -2,
+                duration: 3.5,
+                ease: "power1.inOut",
+                yoyo: true,
+                repeat: -1
+            });
+
+            gsap.to(decorationLeftBottomRef.current, {
+                y: 8,
+                x: -3,
+                rotation: -1,
+                duration: 3.8,
+                ease: "power1.inOut",
+                yoyo: true,
+                repeat: -1
+            });
+
+            gsap.to(decorationRightBottomRef.current, {
+                y: -8,
+                x: 3,
+                rotation: 1,
+                duration: 4.2,
+                ease: "power1.inOut",
                 yoyo: true,
                 repeat: -1
             });
@@ -141,50 +163,48 @@ const SpendIn = () => {
         return () => ctx.revert();
     }, []);
 
-    const addToDecorationRefs = (el) => {
-        if (el && !decorationRefs.current.includes(el)) {
-            decorationRefs.current.push(el);
-        }
-    };
-
     return (
         <div ref={containerRef} className="bg-secondary-default-500 text-white">
             {/* Hero Section */}
             <div ref={heroRef} className="relative overflow-hidden">
-                <Image
-                    ref={addToDecorationRefs}
-                    src="/images/hero-decoration-left.png"
-                    alt="decoration"
-                    width={200}
-                    height={200}
-                    className='left-0 sm:w-[250px] sm:h-[250px] w-[200px] h-[200px] bottom-0 absolute'
-                />
-                <Image
-                    ref={addToDecorationRefs}
-                    src="/images/hero-decoration-right.png"
-                    alt="decoration"
-                    width={200}
-                    height={200}
-                    className='right-0 top-0 sm:w-[250px] sm:h-[250px] w-[200px] h-[200px] absolute'
-                />
-                <Image
-                    ref={addToDecorationRefs}
-                    src="/images/decoration-left.png"
-                    alt="decoration"
-                    width={250}
-                    height={250}
-                    className='left-0 top-0 absolute'
-                />
-                <Image
-                    ref={addToDecorationRefs}
-                    src="/images/decoration-right.png"
-                    alt="decoration"
-                    width={250}
-                    height={250}
-                    className='right-0 bottom-0 absolute'
-                />
+                <div ref={decorationLeftBottomRef}>
+                    <Image
+                        src="/images/hero-decoration-left.png"
+                        alt="decoration"
+                        width={200}
+                        height={200}
+                        className='left-0 sm:w-[250px] sm:h-[250px] w-[200px] h-[200px] bottom-0 absolute'
+                    />
+                </div>
+                <div ref={decorationRightTopRef}>
+                    <Image
+                        src="/images/hero-decoration-right.png"
+                        alt="decoration"
+                        width={200}
+                        height={200}
+                        className='right-0 top-0 sm:w-[250px] sm:h-[250px] w-[200px] h-[200px] absolute'
+                    />
+                </div>
+                <div ref={decorationLeftTopRef}>
+                    <Image
+                        src="/images/decoration-left.png"
+                        alt="decoration"
+                        width={250}
+                        height={250}
+                        className='left-0 top-0 absolute'
+                    />
+                </div>
+                <div ref={decorationRightBottomRef}>
+                    <Image
+                        src="/images/decoration-right.png"
+                        alt="decoration"
+                        width={250}
+                        height={250}
+                        className='right-0 bottom-0 absolute'
+                    />
+                </div>
 
-                <div className="relative px-6 pt-20 pb-12 text-center">
+                <div className="relative md:px-16 px-6 pt-20 pb-12 text-center">
                     <h1 
                         ref={titleRef}
                         className="text-4xl md:text-5xl max-w-xl mx-auto font-bold mb-6 md:text-center text-left leading-tight"
@@ -202,20 +222,18 @@ const SpendIn = () => {
 
                     <div 
                         ref={buttonsRef}
-                        className="grid gap-6 sm:grid-cols-2 grid-cols-1 items-center justify-center max-w-xl mx-auto"
+                        className="grid gap-6 sm:grid-cols-2 grid-cols-1 items-center justify-center max-w-96 mx-auto"
                     >
                         <Button>Get a Free Demo</Button>
                         <Button variant="secondary">See Pricing</Button>
                     </div>
                 </div>
-                
-                <div>
+                <div ref={dashboardRef}>
                     <div className='flex items-center justify-center sm:pt-16 pt-12 px-6'>
                         <Image
-                            ref={dashboardRef}
                             src="/images/dashboard.png"
-                            alt="Logo"
-                            width={1000}
+                            alt="Dashboard"
+                            width={1100}
                             height={800}
                         />
                     </div>

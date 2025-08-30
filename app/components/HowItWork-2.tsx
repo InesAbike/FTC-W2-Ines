@@ -3,7 +3,7 @@ import Image from 'next/image';
 const HowItWorks2 = () => {
 
     return (
-        <div className="bg-secondary-dark-700 py-10 md:py-20 px-6">
+        <div className="bg-secondary-dark-700 py-10 md:py-20 md:px-16 px-6 ">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                    

@@ -5,7 +5,7 @@ import Button from './Button';
 
 const CTA = () => {
     return (
-        <div className="bg-secondary-dark-700 font-semibold text-white pt-20 pl-6 relative">
+        <div className="bg-secondary-dark-700 font-semibold text-white pt-20 lg:pl-16 pl-6 relative">
             <Image
                 src="/images/decoration-left.png"
                 alt="decoration"

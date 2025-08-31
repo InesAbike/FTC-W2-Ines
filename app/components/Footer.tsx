@@ -6,7 +6,7 @@ import { footerLinks } from "../constants";
 
 const SpendInFooter = () => {
   return (
-    <footer className="bg-white py-12 lg:py-16 md:px-16 px-6  font-light">
+    <footer className="bg-white py-12 lg:py-16 md:px-16 px-6 font-light">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
@@ -52,10 +52,10 @@ const SpendInFooter = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-12 lg:mt-16 pt-8 border-t border-purple">
+        <div className="mt-12 lg:mt-16 pt-8 border-t border-secondary-default-500/50">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
             {/* Legal Links */}
-            <div className="flex flex-wrap items-center space-x-1">
+            <div className="flex flex-wrap items-center space-x-1 font-bold">
               <a
                 href="#"
                 className="text-secondary-default-500 hover:text-secondary-dark-900 transition-colors"

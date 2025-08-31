@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { menuItems, productsItems, companyItems, ctaButtons } from "../constants";
+import Button from "./Button";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -93,7 +94,7 @@ function Navbar() {
                 {item.hasDropdown && item.dropdownItems && (
                   <div
                     className={`
-                      absolute top-full left-0 mt-2 w-40 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden
+                      absolute top-full left-0 mt-2 w-50 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden
                       transform transition-all duration-300 ease-out origin-top z-50
                       ${activeDropdown === index
                         ? 'opacity-100 scale-100 translate-y-0 visible'
@@ -159,17 +160,11 @@ function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            <div className="relative w-6 h-6">
+            <div className="relative w-6 h-5">
               <span
                 className={`
                   absolute left-0 top-1 w-6 h-0.5 bg-white transform transition-all duration-300 ease-in-out origin-center
                   ${isOpen ? 'rotate-45 translate-y-2' : 'rotate-0 translate-y-0'}
-                `}
-              />
-              <span
-                className={`
-                  absolute left-0 top-3 w-6 h-0.5 bg-white transform transition-all duration-300 ease-in-out
-                  ${isOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}
                 `}
               />
               <span
@@ -186,7 +181,7 @@ function Navbar() {
       {/* Mobile menu overlay avec animation fluide */}
       <div
         className={`
-          fixed inset-0 z-40 md:hidden transition-all duration-500 ease-out
+          fixed inset-0 z-40 lg:hidden transition-all duration-500 ease-out
           ${isOpen
             ? 'opacity-100 visible'
             : 'opacity-0 invisible'
@@ -254,13 +249,25 @@ function Navbar() {
               </div>
             ))}
           </div>
-          <div className="px-8 pb-8 w-full">
-            <Link
-              href="#"
-              className="border w-full border-white/30 text-white hover:bg-white hover:text-black backdrop-blur-sm hover:border-indigo-black px-6 py-2.5 text-center rounded-full text-sm font-medium transition-colors duration-300 relative overflow-hidden group inline-block"
-            >
-              <span className="relative z-10">Talk to an expert</span>
-            </Link>
+          <div className="flex flex-col gap-8 items-center px-8 pb-24">
+            {ctaButtons.map((button, index) => (
+              <Link
+                key={button.label}
+                href={button.href}
+                className={`
+                  px-6 py-2.5 rounded-full text-sm w-full text-center font-medium transition-all duration-300 transform hover:scale-105
+                  ${button.primary
+                    ? 'bg-transparent hover:bg-primary-default-500 text-secondary-light-200 hover:text-white shadow-lg'
+                    : ' text-white hover:bg-transparent bg-primary-default-500'
+                  }
+                `}
+                style={{
+                  animationDelay: `${(index + 3) * 100}ms`
+                }}
+              >
+                {button.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

@@ -257,7 +257,7 @@ const HowItWork1: React.FC = () => {
 
                 <div 
                     ref={stepsContainerRef}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between mx-auto items-center max-w-6xl"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-8 mx-auto items-center max-w-6xl"
                 >
                     {
                         StepsData.map(

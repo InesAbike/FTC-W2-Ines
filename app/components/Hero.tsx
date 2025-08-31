@@ -117,47 +117,6 @@ const SpendIn: React.FC = () => {
                 });
             });
 
-            // Animation continue des décorations (parallax subtil)
-            gsap.to(decorationLeftTopRef.current, {
-                y: -10,
-                x: -5,
-                rotation: 2,
-                duration: 4,
-                ease: "power1.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-
-            gsap.to(decorationRightTopRef.current, {
-                y: 10,
-                x: 5,
-                rotation: -2,
-                duration: 3.5,
-                ease: "power1.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-
-            gsap.to(decorationLeftBottomRef.current, {
-                y: 8,
-                x: -3,
-                rotation: -1,
-                duration: 3.8,
-                ease: "power1.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-
-            gsap.to(decorationRightBottomRef.current, {
-                y: -8,
-                x: 3,
-                rotation: 1,
-                duration: 4.2,
-                ease: "power1.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-
         }, containerRef);
 
         return () => ctx.revert();

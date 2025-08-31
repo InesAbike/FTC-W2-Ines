@@ -143,7 +143,7 @@ function Navbar() {
                   px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105
                   ${button.primary
                     ? 'bg-transparent hover:bg-primary-default-500 text-secondary-light-200 hover:text-white shadow-lg'
-                    : ' text-white hover:bg-transparent bg-primary-default-500'
+                    : ' text-white hover:bg-primary-dark-700 bg-primary-default-500'
                   }
                 `}
                 style={{

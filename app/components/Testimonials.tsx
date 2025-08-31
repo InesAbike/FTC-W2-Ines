@@ -102,15 +102,14 @@ const TestimonialsCarousel = () => {
                                 style={{ width: `${getSlideWidth()}%` }}
                             >
                                 <div className="bg-secondary-default-500/80 rounded-xl p-6 md:p-8 h-full">
-                                    {/* Testimonial Content */}
-                                    <h3 className="text-lg md:text-xl font-semibold text-white mb-4">
+    <div className='h-52'>
+    <h3 className="text-lg md:text-xl font-semibold text-white mb-4">
                                         {testimonial.title}
                                     </h3>
-                                    <p className="text-secondary-light-100 leading-relaxed mb-6 text-sm md:text-base">
+                                    <p className="text-secondary-light-100 leading-relaxed text-ellipsis mb-6 text-sm md:text-base">
                                         {testimonial.content}
                                     </p>
-
-                                    {/* Author */}
+    </div>
                                     <div className="flex items-center space-x-4 pt-4 border-t border-white/20">
                                         <div className="relative">
                                             <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center">

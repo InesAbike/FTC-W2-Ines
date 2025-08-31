@@ -66,14 +66,6 @@ const WhyUseSpendIn2: React.FC = () => {
                 }
             });
 
-            // Animate decorations
-            tl.to([decorationLeftRef.current, decorationRightRef.current], {
-                opacity: 0.3,
-                scale: 1,
-                duration: 1,
-                ease: "power2.out"
-            }, 0);
-
             // Animate header elements
             tl.to(badgeRef.current, {
                 y: 0,
@@ -103,35 +95,6 @@ const WhyUseSpendIn2: React.FC = () => {
                 ease: "power2.out"
             }, 0.8);
 
-            // Animate image
-            tl.to(imageRef.current, {
-                x: 0,
-                opacity: 1,
-                scale: 1,
-                duration: 1,
-                ease: "power2.out"
-            }, 1);
-
-            // Continuous animations for decorations
-            gsap.to(decorationLeftRef.current, {
-                y: -15,
-                x: -8,
-                rotation: 3,
-                duration: 5,
-                ease: "power1.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-
-            gsap.to(decorationRightRef.current, {
-                y: 15,
-                x: 8,
-                rotation: -3,
-                duration: 4.5,
-                ease: "power1.inOut",
-                yoyo: true,
-                repeat: -1
-            });
 
             // Hover animations for feature cards
             const featureCards = featuresRef.current?.children;
@@ -173,26 +136,6 @@ const WhyUseSpendIn2: React.FC = () => {
                                 ease: "back.out(1.7)"
                             });
                         }
-                    });
-                });
-            }
-
-            // Image hover effect
-            const imageElement = imageRef.current?.querySelector('img');
-            if (imageElement) {
-                imageElement.addEventListener('mouseenter', () => {
-                    gsap.to(imageElement, {
-                        scale: 1.05,
-                        duration: 0.5,
-                        ease: "power2.out"
-                    });
-                });
-
-                imageElement.addEventListener('mouseleave', () => {
-                    gsap.to(imageElement, {
-                        scale: 1,
-                        duration: 0.5,
-                        ease: "power2.out"
                     });
                 });
             }
@@ -276,7 +219,7 @@ const WhyUseSpendIn2: React.FC = () => {
                         }
                     </div>
 
-                    <div ref={imageRef} className="flex justify-center">
+                    <div className="flex justify-center">
                         <Image
                             src='/images/history-table.png'
                             alt="history table"

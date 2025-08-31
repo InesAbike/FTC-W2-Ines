@@ -58,7 +58,7 @@ const WhyUseSpendIn1: React.FC = () => {
                     trigger: headerRef.current,
                     start: "top 80%",
                     end: "bottom 20%",
-                    toggleActions: "play none none reverse"
+                    toggleActions: "play none none none"
                 }
             });
 
@@ -115,7 +115,7 @@ const WhyUseSpendIn1: React.FC = () => {
                     scrollTrigger: {
                         trigger: featuresGridRef.current,
                         start: "top 90%",
-                        toggleActions: "play none none reverse"
+                        toggleActions: "play none none none"
                     }
                 });
             }

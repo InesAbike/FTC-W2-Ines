@@ -74,7 +74,7 @@ const HowItWorks2: React.FC = () => {
                     trigger: containerRef.current,
                     start: "top 75%",
                     end: "bottom 25%",
-                    toggleActions: "play none none reverse"
+                    toggleActions: "play none none none"
                 }
             });
 
@@ -264,14 +264,14 @@ const HowItWorks2: React.FC = () => {
     return (
         <div ref={containerRef} className="bg-secondary-dark-700 py-10 md:py-20 md:px-16 px-6">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center justify-center">
                    
                     <div ref={imageRef} className="order-2 lg:order-1">
                         <Image src="/images/how-it-work-img.png"
                             alt="How it work"
                             width={500}
-                            height={400}
-                            className='h-auto lg:w-[500px] w-full'
+                            height={600}
+                            className='h-[500px] lg:w-[500px] w-full'
                         />
                     </div>
 

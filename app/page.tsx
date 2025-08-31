@@ -10,7 +10,7 @@ import CTA from "./components/CTA";
 
 export default function Home() {
   return (
-    <div className="font-sans bg-secondary-default-500 text-secondary-dark-500">
+    <div className="font-plus-jakarta-sans bg-secondary-default-500 text-secondary-dark-500">
     <Hero/>
     <WhyUseSpendIn1 />
     <WhyUseSpendIn2 />

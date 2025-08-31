@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import {Montserrat} from "next/font/google";
+import {Plus_Jakarta_Sans} from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const montserrat = Montserrat({
+const plusJakartaSans = Plus_Jakarta_Sans({
     subsets: ["latin"],
-    variable: "--font-montserrat",
+    variable: "--font-plus-jakarta-sans",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} antialiased`}
+        className={`${plusJakartaSans.variable} antialiased`}
       >
         <Navbar />
         {children}

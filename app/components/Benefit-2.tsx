@@ -19,16 +19,10 @@ const WhyUseSpendIn2: React.FC = () => {
     const descriptionRef = useRef<HTMLParagraphElement>(null);
     const featuresRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLDivElement>(null);
-    const decorationLeftRef = useRef<HTMLDivElement>(null);
-    const decorationRightRef = useRef<HTMLDivElement>(null);
+
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Set initial states
-            gsap.set([decorationLeftRef.current, decorationRightRef.current], {
-                opacity: 0,
-                scale: 0.8
-            });
 
             gsap.set(badgeRef.current, {
                 y: 30,
@@ -95,51 +89,6 @@ const WhyUseSpendIn2: React.FC = () => {
                 ease: "power2.out"
             }, 0.8);
 
-
-            // Hover animations for feature cards
-            const featureCards = featuresRef.current?.children;
-            if (featureCards) {
-                Array.from(featureCards).forEach((card: Element) => {
-                    const cardElement = card as HTMLDivElement;
-                    
-                    cardElement.addEventListener('mouseenter', () => {
-                        gsap.to(cardElement, {
-                            x: 10,
-                            duration: 0.3,
-                            ease: "power2.out"
-                        });
-                        
-                        const icon = cardElement.querySelector('.bg-primary-default-500');
-                        if (icon) {
-                            gsap.to(icon, {
-                                scale: 1.1,
-                                rotation: 5,
-                                duration: 0.3,
-                                ease: "back.out(1.7)"
-                            });
-                        }
-                    });
-
-                    cardElement.addEventListener('mouseleave', () => {
-                        gsap.to(cardElement, {
-                            x: 0,
-                            duration: 0.3,
-                            ease: "power2.out"
-                        });
-                        
-                        const icon = cardElement.querySelector('.bg-primary-default-500');
-                        if (icon) {
-                            gsap.to(icon, {
-                                scale: 1,
-                                rotation: 0,
-                                duration: 0.3,
-                                ease: "back.out(1.7)"
-                            });
-                        }
-                    });
-                });
-            }
-
         }, containerRef);
 
         return () => ctx.revert();
@@ -147,7 +96,7 @@ const WhyUseSpendIn2: React.FC = () => {
 
     return (
         <div ref={containerRef} className="bg-white md:py-20 py-10 md:px-16 px-6  relative">
-            <div ref={decorationLeftRef}>
+            <div>
                 <Image
                     src="/images/decoration-left.png"
                     alt="decoration"
@@ -156,7 +105,7 @@ const WhyUseSpendIn2: React.FC = () => {
                     className='left-0 top-0 absolute'
                 />
             </div>
-            <div ref={decorationRightRef}>
+            <div>
                 <Image
                     src="/images/decoration-right.png"
                     alt="decoration"

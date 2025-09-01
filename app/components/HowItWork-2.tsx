@@ -11,7 +11,6 @@ if (typeof window !== 'undefined') {
 
 const HowItWorks2: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const imageRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const badgeRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
@@ -19,13 +18,6 @@ const HowItWorks2: React.FC = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Set initial states
-            gsap.set(imageRef.current, {
-                x: -100,
-                opacity: 0,
-                scale: 0.9
-            });
-
             gsap.set(badgeRef.current, {
                 y: 30,
                 opacity: 0
@@ -50,15 +42,6 @@ const HowItWorks2: React.FC = () => {
                     toggleActions: "play none none none"
                 }
             });
-
-            // Animate image
-            tl.to(imageRef.current, {
-                x: 0,
-                opacity: 1,
-                scale: 1,
-                duration: 1,
-                ease: "power3.out"
-            }, 0);
 
             // Animate content elements
             tl.to(badgeRef.current, {
@@ -87,9 +70,8 @@ const HowItWorks2: React.FC = () => {
     return (
         <div ref={containerRef} className="bg-secondary-dark-700 py-10 md:py-20 md:px-16 px-6">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center justify-center">
-                   
-                    <div ref={imageRef} className="order-2 lg:order-1">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center justify-center">  
+                    <div className="order-2 lg:order-1">
                         <Image src="/images/how-it-work-img.png"
                             alt="How it work"
                             width={500}

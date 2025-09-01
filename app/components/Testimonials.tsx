@@ -1,61 +1,47 @@
 "use client"
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import useEmblaCarousel from 'embla-carousel-react';
 import { testimonials } from '../datas';
 
-const TestimonialsCarousel = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [slidesToShow, setSlidesToShow] = useState(3);
-    const carouselRef = useRef(null);
+const TestimonialsCarousel: React.FC = () => {
+    const [emblaRef, emblaApi] = useEmblaCarousel({
+        align: 'start',
+        skipSnaps: false,
+        slidesToScroll: 1,
+        breakpoints: {
+            '(max-width: 768px)': { slidesToScroll: 1 },
+            '(min-width: 769px)': { slidesToScroll: 1 }
+        }
+    });
 
-    // Handle responsive slides
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 768) {
-                setSlidesToShow(1); // Mobile: 1 slide
-            } else if (window.innerWidth < 1024) {
-                setSlidesToShow(2); // Tablet: 2 slides
-            } else {
-                setSlidesToShow(3); // Desktop: 3 slides
-            }
-        };
+    const [prevBtnDisabled, setPrevBtnDisabled] = useState<boolean>(true);
+    const [nextBtnDisabled, setNextBtnDisabled] = useState<boolean>(false);
 
-        // Set initial value
-        handleResize();
+    const scrollPrev = useCallback(() => {
+        if (emblaApi) emblaApi.scrollPrev();
+    }, [emblaApi]);
 
-        // Add event listener
-        window.addEventListener('resize', handleResize);
+    const scrollNext = useCallback(() => {
+        if (emblaApi) emblaApi.scrollNext();
+    }, [emblaApi]);
 
-        // Cleanup
-        return () => window.removeEventListener('resize', handleResize);
+    const onSelect = useCallback((emblaApi: any) => {
+        setPrevBtnDisabled(!emblaApi.canScrollPrev());
+        setNextBtnDisabled(!emblaApi.canScrollNext());
     }, []);
 
-    // Reset slide when slidesToShow changes
     useEffect(() => {
-        setCurrentSlide(0);
-    }, [slidesToShow]);
+        if (!emblaApi) return;
 
-    const maxSlides = testimonials.length - slidesToShow;
-
-    const nextSlide = () => {
-        if (currentSlide < maxSlides) {
-            setCurrentSlide(currentSlide + 1);
-        }
-    };
-
-    const prevSlide = () => {
-        if (currentSlide > 0) {
-            setCurrentSlide(currentSlide - 1);
-        }
-    };
-
-    const getSlideWidth = () => {
-        return 100 / slidesToShow;
-    };
+        onSelect(emblaApi);
+        emblaApi.on('reInit', onSelect);
+        emblaApi.on('select', onSelect);
+    }, [emblaApi, onSelect]);
 
     return (
-        <div className="bg-secondary-dark-700 py-20 md:px-16 px-6  relative">
+        <div className="bg-secondary-dark-700 py-20 md:px-16 px-6 relative">
             <Image
                 src="/images/decoration-left.png"
                 alt="decoration"
@@ -86,30 +72,23 @@ const TestimonialsCarousel = () => {
                     </p>
                 </div>
 
-                {/* Carousel Container */}
-                <div className="relative overflow-hidden">
-                    <div
-                        ref={carouselRef}
-                        className="flex transition-transform duration-500 ease-out"
-                        style={{
-                            transform: `translateX(-${currentSlide * getSlideWidth()}%)`,
-                        }}
-                    >
+                {/* Embla Carousel */}
+                <div className="overflow-hidden" ref={emblaRef}>
+                    <div className="flex">
                         {testimonials.map((testimonial) => (
                             <div
                                 key={testimonial.id}
-                                className="flex-shrink-0 px-2 md:px-4"
-                                style={{ width: `${getSlideWidth()}%` }}
+                                className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-2 md:px-4"
                             >
                                 <div className="bg-secondary-default-500/80 rounded-xl p-6 md:p-8 h-full">
-    <div className='h-52'>
-    <h3 className="text-lg md:text-xl font-semibold text-white mb-4">
-                                        {testimonial.title}
-                                    </h3>
-                                    <p className="text-secondary-light-100 leading-relaxed text-ellipsis mb-6 text-sm md:text-base">
-                                        {testimonial.content}
-                                    </p>
-    </div>
+                                    <div className='h-52 overflow-hidden text-ellipsis mb-4'>
+                                        <h3 className="text-lg md:text-xl font-semibold text-white mb-4">
+                                            {testimonial.title}
+                                        </h3>
+                                        <p className="text-secondary-light-100 leading-relaxed mb-6 text-sm md:text-base">
+                                            {testimonial.content}
+                                        </p>
+                                    </div>
                                     <div className="flex items-center space-x-4 pt-4 border-t border-white/20">
                                         <div className="relative">
                                             <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center">
@@ -122,8 +101,8 @@ const TestimonialsCarousel = () => {
                                                 src={testimonial.avatar}
                                                 alt={testimonial.author}
                                                 className="w-10 h-10 md:w-12 md:h-12 rounded-full absolute inset-0 object-cover"
-                                                onError={(e) => {
-                                                    e.currentTarget.style.display = 'none';
+                                                onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                                                    (e.currentTarget as HTMLImageElement).style.display = 'none';
                                                 }}
                                             />
                                         </div>
@@ -146,24 +125,24 @@ const TestimonialsCarousel = () => {
                 <div className="flex items-center justify-center space-x-4 md:space-x-8 mt-12">
                     {/* Left Button */}
                     <button
-                        onClick={prevSlide}
-                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${currentSlide > 0
+                        onClick={scrollPrev}
+                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${!prevBtnDisabled
                             ? 'bg-primary-default-500 hover:bg-primary-default-600 text-white'
                             : 'bg-gray-600 cursor-not-allowed opacity-50 text-gray-400'
                             }`}
-                        disabled={currentSlide === 0}
+                        disabled={prevBtnDisabled}
                     >
                         <ArrowLeft size={20} />
                     </button>
 
                     {/* Right Button */}
                     <button
-                        onClick={nextSlide}
-                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${currentSlide < maxSlides
+                        onClick={scrollNext}
+                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-200 ${!nextBtnDisabled
                             ? 'bg-primary-default-500 hover:bg-primary-default-600 text-white'
                             : 'bg-gray-600 cursor-not-allowed opacity-50 text-gray-400'
                             }`}
-                        disabled={currentSlide >= maxSlides}
+                        disabled={nextBtnDisabled}
                     >
                         <ArrowRight size={20} />
                     </button>

@@ -181,7 +181,7 @@ function Navbar() {
       {/* Mobile menu overlay avec animation fluide */}
       <div
         className={`
-          fixed inset-0 z-40 lg:hidden transition-all duration-500 ease-out overflow-auto
+          fixed inset-0 z-40 lg:hidden transition-all duration-500 ease-out
           ${isOpen
             ? 'opacity-100 visible'
             : 'opacity-0 invisible'

@@ -9,9 +9,9 @@ const SpendInFooter = () => {
     <footer className="bg-white py-12 lg:py-16 md:px-16 px-6 font-light">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Logo and Description */}
-          <div className="lg:col-span-1 md:col-span-2">
+          <div className="lg:col-span-1 col-span-2">
             <Link
               href="#"
               className="flex items-center space-x-2 z-50 mb-6 relative"
@@ -55,21 +55,21 @@ const SpendInFooter = () => {
         <div className="mt-12 lg:mt-16 pt-8 border-t border-secondary-default-500/50">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
             {/* Legal Links */}
-            <div className="flex flex-wrap items-center space-x-1 font-bold">
+            <div className="flex md:flex-row flex-col md:gap-4 gap-8 md:items-center items-start space-x-1 font-bold">
               <a
                 href="#"
                 className="text-secondary-default-500 hover:text-secondary-dark-900 transition-colors"
               >
                 Privacy Policy
               </a>
-              <span className="text-gray-400 mx-3">|</span>
+              <span className="text-gray-400 mx-3 hidden md:block">|</span>
               <a
                 href="#"
                 className="text-secondary-default-500 hover:text-secondary-dark-900 transition-colors"
               >
                 Terms & Conditions
               </a>
-              <span className="text-gray-400 mx-3">|</span>
+              <span className="text-gray-400 mx-3 hidden md:block">|</span>
               <a
                 href="#"
                 className="text-secondary-default-500 hover:text-secondary-dark-900 transition-colors"

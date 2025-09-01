@@ -181,7 +181,7 @@ function Navbar() {
       {/* Mobile menu overlay avec animation fluide */}
       <div
         className={`
-          fixed inset-0 z-40 lg:hidden transition-all duration-500 ease-out
+          fixed inset-0 z-40 lg:hidden transition-all duration-500 ease-out overflow-auto
           ${isOpen
             ? 'opacity-100 visible'
             : 'opacity-0 invisible'
@@ -249,7 +249,7 @@ function Navbar() {
               </div>
             ))}
           </div>
-          <div className="flex flex-col gap-8 items-center px-8 pb-24">
+          <div className="flex flex-col gap-8 items-center px-8 py-24">
             {ctaButtons.map((button, index) => (
               <Link
                 key={button.label}

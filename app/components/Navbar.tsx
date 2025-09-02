@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import { menuItems, productsItems, companyItems, ctaButtons } from "../constants";
-import Button from "./Button";
+import { menuItems, ctaButtons } from "../constants";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -234,7 +233,7 @@ function Navbar() {
                 {/* Mobile dropdown items */}
                 {item.hasDropdown && item.dropdownItems && (
                   <div className="ml-4 mt-2 space-y-2">
-                    {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                    {item.dropdownItems.map((dropdownItem) => (
                       <Link
                         key={dropdownItem.label}
                         href={dropdownItem.href}

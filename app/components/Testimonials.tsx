@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 import { testimonials } from '../datas';
+import type { EmblaCarouselType } from 'embla-carousel';
 
 const TestimonialsCarousel: React.FC = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -27,7 +28,7 @@ const TestimonialsCarousel: React.FC = () => {
         if (emblaApi) emblaApi.scrollNext();
     }, [emblaApi]);
 
-    const onSelect = useCallback((emblaApi: any) => {
+    const onSelect = useCallback((emblaApi:EmblaCarouselType) => {
         setPrevBtnDisabled(!emblaApi.canScrollPrev());
         setNextBtnDisabled(!emblaApi.canScrollNext());
     }, []);
@@ -97,9 +98,11 @@ const TestimonialsCarousel: React.FC = () => {
                                                 </span>
                                             </div>
                                             {/* Fallback for when image doesn't exist */}
-                                            <img
+                                            <Image
                                                 src={testimonial.avatar}
                                                 alt={testimonial.author}
+                                                width={50}
+                                                height={50}
                                                 className="w-10 h-10 md:w-12 md:h-12 rounded-full absolute inset-0 object-cover"
                                                 onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
                                                     (e.currentTarget as HTMLImageElement).style.display = 'none';

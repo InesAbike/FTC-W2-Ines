@@ -1,7 +1,4 @@
-import { RiHeartsFill } from "react-icons/ri";
 import { FeatureCardProps, PricingPlan, StepProps, TestimonialProps } from "../types";
-import { BiSolidCrown } from "react-icons/bi";
-import { IoFlash } from "react-icons/io5";
 
 export const FeaturesData1: FeatureCardProps[] = [
     {
